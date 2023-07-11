@@ -1,0 +1,20 @@
+/**
+ * @param {number[]} nums
+ * @return {number}
+ */
+var majorityElement = function(nums) {
+    var majoritycheck = 0;
+    while (majoritycheck < nums.length){
+        var i = 0;
+        var majoritycount = 0;
+        while (i < nums.length){
+            if (nums[majoritycheck] === nums[i])
+                majoritycount++;
+            i++;
+        }
+        if (majoritycount > nums.length/2)
+            return nums[majoritycheck];
+        majoritycheck++;
+    }
+    return -1; // return -1 or throw an exception if no majority element is found
+};
