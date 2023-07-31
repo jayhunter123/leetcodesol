@@ -1,0 +1,21 @@
+/**
+ * @param {number[]} nums
+ * @return {number[][]}
+ */
+var permute = function(nums) {
+    var result = [];
+    if (nums.length === 0) return [];
+    if (nums.length === 1) return [nums];
+    
+    for (var i = 0; i < nums.length; i++) {
+        var currentNum = nums[i];
+        var remainingNums = nums.slice(0, i).concat(nums.slice(i + 1));
+        var remainingNumsPermuted = permute(remainingNums);
+        
+        for (var j = 0; j < remainingNumsPermuted.length; j++) {
+            var permutedArray = [currentNum].concat(remainingNumsPermuted[j]);
+            result.push(permutedArray);
+        }
+    }
+    return result;
+};
